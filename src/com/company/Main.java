@@ -49,7 +49,7 @@ public class Main {
                 System.out.println("Your number is too low!");
                 numberOfGuesses++;
             } else if (numberOfGuesses == MAX_GUESS_COUNT) {
-                System.out.println("Sorry you have ran out of guesses. The correct number was: " + randomNum);
+                System.out.println("Congratulations you guessed my number");
             }
 
 
@@ -59,6 +59,8 @@ public class Main {
 
 
         String replay = "Would you like to play again?";
+
+        System.out.println(replay);
 
         Scanner pushRestart = new Scanner(System.in);
 
@@ -70,10 +72,6 @@ public class Main {
 
         String start = "welcome back," + myName;
 
-
-        System.out.println(replay);
-        System.out.println(restart);
-
         do {
             System.out.println(replay);
 
@@ -83,12 +81,12 @@ public class Main {
 
             else if (restart == yes){
                 System.out.println(start);
+
             }
         }while (numberOfGuesses <= 4);
 
 
 
-        System.exit(0);
 
     }
 }
