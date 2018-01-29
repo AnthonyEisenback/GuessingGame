@@ -26,22 +26,21 @@ public class Main {
 
 
         Scanner myGuess = new Scanner(System.in);
-        int numberOfGuesses =0;
+        int numberOfGuesses = 0;
 
-        final int MAX_GUESS_COUNT = 5;
+        System.out.println("Enter your guess: ");
 
-        System.out.println("Enter your guess:");
-        int guess = myGuess.nextInt();
+
+        final int MAX_GUESS_COUNT = 4;
+
 
         int randomNum = (int) (1 + Math.random() * 100);
 
-        if (guess == randomNum) {
-
-            System.out.println("You guessed the number.");
-        }
-
 
         do {
+            int guess = myGuess.nextInt();
+
+
             if (guess > randomNum) {
 
                 System.out.println("your number is too high!");
@@ -49,12 +48,47 @@ public class Main {
             } else if (guess < randomNum) {
                 System.out.println("Your number is too low!");
                 numberOfGuesses++;
-            }
-
-            else if (numberOfGuesses == MAX_GUESS_COUNT){
+            } else if (numberOfGuesses == MAX_GUESS_COUNT) {
                 System.out.println("Sorry you have ran out of guesses. The correct number was: " + randomNum);
             }
 
-        } while(numberOfGuesses <= 5) ;
+
+        } while (numberOfGuesses <= 4);
+
+        System.out.println("sorry the correct number was: " + randomNum);
+
+
+        String replay = "Would you like to play again?";
+
+        Scanner pushRestart = new Scanner(System.in);
+
+        String restart = pushRestart.nextLine();
+
+        String end = "no";
+
+        String yes = "yes";
+
+        String start = "welcome back," + myName;
+
+
+        System.out.println(replay);
+        System.out.println(restart);
+
+        do {
+            System.out.println(replay);
+
+            if (restart == end) {
+                System.out.println("Goodbye");
+            }
+
+            else if (restart == yes){
+                System.out.println(start);
+            }
+        }while (numberOfGuesses <= 4);
+
+
+
+        System.exit(0);
+
     }
 }
