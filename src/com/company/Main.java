@@ -1,5 +1,7 @@
 package com.company;
 
+import java.time.Year;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -13,78 +15,76 @@ public class Main {
         5. Allow the user to play again if they would like.
           */
 
-        System.out.println("welcome player to a number Guessing Game, What is your name?");
 
-        Scanner name = new Scanner(System.in);
-        String myName = name.nextLine();
-        String welcoming = "Welcome, ";
-
-
-        System.out.println(welcoming + myName);
 
 //        asks your name and your guess and checks to see what you inputted.
 
 
-        Scanner myGuess = new Scanner(System.in);
-        int numberOfGuesses = 0;
-
-        System.out.println("Enter your guess: ");
-
-
-        final int MAX_GUESS_COUNT = 4;
+        {
+            String userInput = null;
+            do {
 
 
-        int randomNum = (int) (1 + Math.random() * 100);
+                Scanner myGuess = new Scanner(System.in);
+                int numberOfGuesses = 0;
+                System.out.println("Enter your guess: ");
+                int randomNum = (int) (1 + Math.random() * 100);
+                final int MAX_GUESS_COUNT = 4;
 
 
-        do {
-            int guess = myGuess.nextInt();
+                System.out.println("pick a number between 1 and 100: ");
 
 
-            if (guess > randomNum) {
+                int quit = 1;
 
-                System.out.println("your number is too high!");
-                numberOfGuesses++;
-            } else if (guess < randomNum) {
-                System.out.println("Your number is too low!");
-                numberOfGuesses++;
-            } else if (numberOfGuesses == MAX_GUESS_COUNT) {
-                System.out.println("Congratulations you guessed my number");
-            }
+                int guess = 0;
+                do {
+                    try {
 
 
-        } while (numberOfGuesses <= 4);
 
-        System.out.println("sorry the correct number was: " + randomNum);
+                    } catch (NumberFormatException ime) {
+                        System.out.println("you have to use a number!");
+
+                    }
+                    do {
+                        guess = myGuess.nextInt();
+
+                        if (guess > randomNum) {
+
+                            System.out.println("your number is too high!");
+                            numberOfGuesses++;
+                            System.out.println("Enter your guess: ");
+
+                        } else if (guess < randomNum) {
+                            System.out.println("Your number is too low!");
+                            numberOfGuesses++;
+                            System.out.println("Enter your guess: ");
+
+                        } else if (guess == randomNum) {
+                            System.out.println("Congratulations you guessed my number");
+                        }
+                    } while (numberOfGuesses <= MAX_GUESS_COUNT);
 
 
-        String replay = "Would you like to play again?";
+                    System.out.println("sorry the correct number was: " + randomNum);
 
-        System.out.println(replay);
 
-        Scanner pushRestart = new Scanner(System.in);
+                    String replay = "Would you like to play again?";
 
-        String restart = pushRestart.nextLine();
+                    System.out.println(replay);
 
-        String end = "no";
+                    Scanner scanner = new Scanner(System.in);
 
-        String yes = "yes";
+                    System.out.println("Y or N");
 
-        String start = "welcome back," + myName;
+                    userInput = scanner.nextLine();
+                    quit = 100;
 
-        do {
-            System.out.println(replay);
+                } while (guess > quit);
 
-            if (restart == end) {
-                System.out.println("Goodbye");
-            }
-
-            else if (restart == yes){
-                System.out.println(start);
-
-            }
-        }while (numberOfGuesses <= 4);
-
+            } while (userInput.toUpperCase().equals("Y"));
+        }
 
 
 
